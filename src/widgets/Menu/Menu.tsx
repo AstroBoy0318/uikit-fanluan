@@ -18,15 +18,26 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const StyledNav = styled.nav<{ showMenu: boolean }>`
+const MenuContainer = styled.div<{ showMenu: boolean }>`
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
+  top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT*2}px`)};
+  transition: top 0.2s;
   left: 0;
+  z-index: 20;
+  width: 100%;
+`;
+
+const StyledNav = styled.nav<{ showMenu: boolean }>`
+  // position: fixed;
+  // top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT}px`)};
+  // left: 0;
   transition: top 0.2s;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 8px;
+  padding-left: 16px;
   padding-right: 16px;
   width: 100%;
   height: ${MENU_HEIGHT}px;
@@ -70,6 +81,8 @@ const Menu: React.FC<NavProps> = ({
   priceLink,
   profile,
   children,
+  warning,
+  cakeContract,
   socials
 }) => {
   const { isXl } = useMatchBreakpoints();
@@ -112,36 +125,39 @@ const Menu: React.FC<NavProps> = ({
 
   return (
     <Wrapper>
-      <StyledNav showMenu={showMenu}>
-        <Logo
-          isPushed={isPushed}
-          togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
-          isDark={isDark}
-          isMobile={isMobile}
-          href={homeLink?.href ?? "/"}
-        />
-	      {!isMobile && 
-          <PanelBody 
+      <MenuContainer showMenu={showMenu}>
+        {warning}
+        <StyledNav showMenu={showMenu}>
+          <Logo
             isPushed={isPushed}
-            isMobile={isMobile}
+            togglePush={() => setIsPushed((prevState: boolean) => !prevState)}
             isDark={isDark}
-            toggleTheme={toggleTheme}
-            langs={langs}
-            setLang={setLang}
-            currentLang={currentLang}
-            cakePriceUsd={cakePriceUsd}
-            pushNav={setIsPushed}
-            links={links}
-            priceLink={priceLink}
-            socials={socials} />
-        }
-        {!!login && !!logout && (
-          <Flex>
-            <UserBlock account={account} login={login} logout={logout} />
-            {profile && <Avatar profile={profile} />}
-          </Flex>
-        )}
-      </StyledNav>
+            isMobile={isMobile}
+            href={homeLink?.href ?? "/"}
+          />
+          {!isMobile && 
+            <PanelBody 
+              isPushed={isPushed}
+              isMobile={isMobile}
+              isDark={isDark}
+              toggleTheme={toggleTheme}
+              langs={langs}
+              setLang={setLang}
+              currentLang={currentLang}
+              cakePriceUsd={cakePriceUsd}
+              pushNav={setIsPushed}
+              links={links}
+              priceLink={priceLink}
+              socials={socials} />
+          }
+          {!!login && !!logout && (
+            <Flex>
+              <UserBlock account={account} login={login} logout={logout} cakeContract={cakeContract} priceLink={priceLink} socials={socials} cakePriceUsd={cakePriceUsd} />
+              {profile && <Avatar profile={profile} />}
+            </Flex>
+          )}
+        </StyledNav>
+      </MenuContainer>
       <BodyWrapper>
         {
           isMobile &&
