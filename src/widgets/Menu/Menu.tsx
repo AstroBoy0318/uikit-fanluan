@@ -22,8 +22,8 @@ const MenuContainer = styled.div<{ showMenu: boolean }>`
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT*2}px`)};
-  transition: top 0.2s;
+  top: ${({ showMenu }) => (showMenu ? 0 : `-${MENU_HEIGHT*4}px`)};
+  transition: top 0.3s;
   left: 0;
   z-index: 20;
   width: 100%;
