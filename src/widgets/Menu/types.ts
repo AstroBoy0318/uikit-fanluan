@@ -73,5 +73,6 @@ export interface NavProps extends PanelProps {
   profile?: Profile;
   cakeContract: any;
   logout: () => void;
-  warning?: any;
+  warningClosed?: boolean;
+  toggleWarningClosed?: boolean;
 }

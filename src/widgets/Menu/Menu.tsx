@@ -12,6 +12,7 @@ import { MENU_HEIGHT, SIDEBAR_WIDTH_REDUCED, SIDEBAR_WIDTH_FULL } from "./config
 import Avatar from "./Avatar";
 import PanelBody from "./PanelBody";
 import PanelFooter from "./PanelFooter";
+import Warning from "./Warning";
 
 const Wrapper = styled.div`
   position: relative;
@@ -81,7 +82,8 @@ const Menu: React.FC<NavProps> = ({
   priceLink,
   profile,
   children,
-  warning,
+  warningClosed=true,
+  toggleWarningClosed,
   cakeContract,
   socials
 }) => {
@@ -90,6 +92,7 @@ const Menu: React.FC<NavProps> = ({
   const [isPushed, setIsPushed] = useState(!isMobile);
   const [showMenu, setShowMenu] = useState(true);
   const refPrevOffset = useRef(window.pageYOffset);
+  const [closedWarning, setClosedWarning] = useState(warningClosed);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -126,7 +129,7 @@ const Menu: React.FC<NavProps> = ({
   return (
     <Wrapper>
       <MenuContainer showMenu={showMenu}>
-        {warning}
+        {!closedWarning && <Warning setClosedWarning={setClosedWarning} toggleValue={toggleWarningClosed} />}
         <StyledNav showMenu={showMenu}>
           <Logo
             isPushed={isPushed}
@@ -164,6 +167,7 @@ const Menu: React.FC<NavProps> = ({
           <Panel
             isPushed={isPushed}
             isMobile={isMobile}
+            closedWarning={closedWarning}
             showMenu={showMenu}
             isDark={isDark}
             toggleTheme={toggleTheme}
