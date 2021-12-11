@@ -2586,7 +2586,7 @@ var useWalletModal = function (login, logout, account) {
 };
 
 var SocialEntry$1 = styled.div(templateObject_1$G || (templateObject_1$G = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 16px;\n"], ["\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: ", "px;\n  padding: 0 16px;\n"])), MENU_ENTRY_HEIGHT);
-var PriceLink$1 = styled.a(templateObject_2$e || (templateObject_2$e = __makeTemplateObject(["\n  display: flex;\n  align-items: center;\n  svg {\n    transition: transform 0.3s;\n  }\n  :hover {\n    svg {\n      transform: scale(1.2);\n    }\n  }\n"], ["\n  display: flex;\n  align-items: center;\n  svg {\n    transition: transform 0.3s;\n  }\n  :hover {\n    svg {\n      transform: scale(1.2);\n    }\n  }\n"])));
+var PriceLink$1 = styled.a(templateObject_2$e || (templateObject_2$e = __makeTemplateObject(["\n  margin-left: 10px;\n  margin-right: 20px;\n  display: flex;\n  align-items: center;\n  svg {\n    transition: transform 0.3s;\n  }\n  :hover {\n    svg {\n      transform: scale(1.2);\n    }\n  }\n"], ["\n  margin-left: 10px;\n  margin-right: 20px;\n  display: flex;\n  align-items: center;\n  svg {\n    transition: transform 0.3s;\n  }\n  :hover {\n    svg {\n      transform: scale(1.2);\n    }\n  }\n"])));
 var Icons$2 = IconModule;
 var UserBlock = function (_a) {
     var account = _a.account, login = _a.login, logout = _a.logout, cakeContract = _a.cakeContract, priceLink = _a.priceLink, socials = _a.socials, cakePriceUsd = _a.cakePriceUsd;

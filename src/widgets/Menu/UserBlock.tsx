@@ -28,6 +28,8 @@ const SocialEntry = styled.div`
 `;
 
 const PriceLink = styled.a`
+  margin-left: 10px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
   svg {
